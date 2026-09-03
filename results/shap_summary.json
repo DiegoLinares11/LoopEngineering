@@ -18,7 +18,7 @@
       "suma_atribuciones": 13.640112817287445,
       "masa_positiva": 14.653836451820098,
       "masa_negativa": -1.0137236345326528,
-      "segundos": 318.0
+      "segundos_cpu": 3468.5
     },
     {
       "id": "campo",
@@ -26,7 +26,7 @@
       "suma_atribuciones": 13.507175624370575,
       "masa_positiva": 14.112021077336976,
       "masa_negativa": -0.6048454529664014,
-      "segundos": 295.4
+      "segundos_cpu": 4643.8
     },
     {
       "id": "partido",
@@ -34,7 +34,7 @@
       "suma_atribuciones": 5.525874152779579,
       "masa_positiva": 7.20756276109023,
       "masa_negativa": -1.681688608310651,
-      "segundos": 37434.4
+      "segundos_cpu": 4833.6
     }
   ]
 }

@@ -275,8 +275,8 @@ que está reconociendo es una escena de fútbol, no un balón de fútbol.
 
 Conviene notar que la baja confianza ($0.104$) es en sí misma una señal de alarma
 disponible sin ninguna herramienta de explicabilidad. Pero la confianza sola no dice
-\emph{por qué}: sin las ablaciones no habría forma de distinguir entre "el objeto es
-pequeño y difícil de ver" y "el objeto es irrelevante para esta predicción". Son
+\emph{por qué}: sin las ablaciones no habría forma de distinguir entre ``el objeto es
+pequeño y difícil de ver'' y ``el objeto es irrelevante para esta predicción''. Son
 diagnósticos distintos que llevan a mitigaciones distintas.
 
 \subsection{Implicaciones para el uso de SHAP}
@@ -296,7 +296,7 @@ delatan que la predicción de C está anclada en el contexto. Un método fiel pu
 producir una explicación que se malinterpreta con facilidad.
 
 Tercero, \textbf{la línea base es parte de la explicación}. Las atribuciones responden
-a "respecto de qué" \citep{sundararajan2020many, kumar2020problems}: aquí, respecto de
+a ``respecto de qué'' \citep{sundararajan2020many, kumar2020problems}: aquí, respecto de
 una versión con \emph{inpainting} de la propia imagen. Otra línea base --gris uniforme,
 ruido, media del conjunto-- habría dado otros números. Este trabajo la explicita, pero
 no explora su sensibilidad, y esa dependencia debería declararse siempre que se reporte
