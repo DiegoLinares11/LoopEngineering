@@ -68,7 +68,7 @@ def figura(ids, imagenes, mapas, probs, destino):
         ax.set_xticks([]); ax.set_yticks([])
         barra = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.03)
         barra.ax.tick_params(labelsize=6)
-        barra.set_label(r"contribucion al logit por pixel ($	imes 10^{-3}$)", fontsize=6)
+        barra.set_label(r"contribucion al logit por pixel ($\times 10^{-3}$)", fontsize=6)
 
     fig.suptitle(
         f"Evidencia a favor de la clase '{CLASE_OBJETIVO}' (rojo suma, azul resta)",
@@ -83,11 +83,29 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--evals", type=int, default=2000, help="presupuesto de evaluaciones por imagen")
     parser.add_argument("--batch", type=int, default=50, help="imagenes enmascaradas por lote")
+    parser.add_argument(
+        "--solo-figura",
+        action="store_true",
+        help="redibuja la figura desde el .npz guardado, sin recalcular las atribuciones",
+    )
     args = parser.parse_args()
 
     fijar_semillas()
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    if args.solo_figura:
+        # Ajustar la estetica de la figura no deberia costar otra hora de computo.
+        datos = np.load(RESULTS_DIR / "shap_values.npz", allow_pickle=False)
+        figura(
+            [str(x) for x in datos["ids"]],
+            datos["imagenes"],
+            datos["mapas"],
+            datos["prob_objetivo"],
+            FIGURES_DIR / "shap_atribuciones.png",
+        )
+        print(f"Figura -> {FIGURES_DIR / 'shap_atribuciones.png'}")
+        return
 
     processor, model, id2label = cargar_modelo()
     objetivo = indices_de_interes(id2label)[CLASE_OBJETIVO]
@@ -104,6 +122,9 @@ def main() -> None:
     for i, nombre in enumerate(ids):
         # Se mide tiempo de CPU y no de reloj: si la maquina se suspende a media
         # corrida el reloj de pared cuenta la suspension y el dato deja de servir.
+        # Ojo al leerlo: process_time suma el trabajo de todos los hilos de torch,
+        # asi que es aproximadamente el tiempo de pared multiplicado por los nucleos
+        # ocupados, no una medida de cuanto hay que esperar.
         inicio = time.process_time()
         sv = explainer(
             X[i : i + 1],
