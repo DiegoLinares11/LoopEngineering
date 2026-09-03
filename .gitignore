@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Caches de modelos y datasets
+.cache/
+*.safetensors
+*.bin
+
+# Salidas de LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Sistema
+.DS_Store
+Thumbs.db
