@@ -102,16 +102,18 @@ def main() -> None:
 
     mapas, tiempos = [], []
     for i, nombre in enumerate(ids):
-        inicio = time.perf_counter()
+        # Se mide tiempo de CPU y no de reloj: si la maquina se suspende a media
+        # corrida el reloj de pared cuenta la suspension y el dato deja de servir.
+        inicio = time.process_time()
         sv = explainer(
             X[i : i + 1],
             max_evals=args.evals,
             batch_size=args.batch,
             outputs=[objetivo],
         )
-        tiempos.append(time.perf_counter() - inicio)
+        tiempos.append(time.process_time() - inicio)
         mapas.append(mapa_de_atribucion(sv.values[0, ..., 0]))
-        print(f"[{nombre}] {tiempos[-1]:.1f}s  suma={mapas[-1].sum():+.4f}", flush=True)
+        print(f"[{nombre}] {tiempos[-1]:.1f}s CPU  suma={mapas[-1].sum():+.4f}", flush=True)
 
     mapas = np.stack(mapas)
     np.savez_compressed(
@@ -137,7 +139,7 @@ def main() -> None:
                 "suma_atribuciones": float(m.sum()),
                 "masa_positiva": float(m[m > 0].sum()),
                 "masa_negativa": float(m[m < 0].sum()),
-                "segundos": round(t, 1),
+                "segundos_cpu": round(t, 1),
             }
             for nombre, p, m, t in zip(ids, probs, mapas, tiempos)
         ],
