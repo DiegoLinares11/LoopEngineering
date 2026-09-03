@@ -1,0 +1,40 @@
+{
+  "clase_objetivo": "soccer ball",
+  "indice_objetivo": 805,
+  "evaluaciones_por_imagen": 120,
+  "versiones": {
+    "python": "3.14.2",
+    "torch": "2.10.0+cu128",
+    "transformers": "5.14.1",
+    "shap": "0.52.0",
+    "numpy": "2.4.1",
+    "modelo": "google/vit-base-patch16-224",
+    "semilla": "20260902"
+  },
+  "imagenes": [
+    {
+      "id": "close_up",
+      "prob_objetivo": 0.9968090653419495,
+      "suma_atribuciones": 13.640112817287445,
+      "masa_positiva": 13.721143245697021,
+      "masa_negativa": -0.08103042840957642,
+      "segundos": 18.6
+    },
+    {
+      "id": "campo",
+      "prob_objetivo": 0.9829440712928772,
+      "suma_atribuciones": 13.507175624370575,
+      "masa_positiva": 13.53023175150156,
+      "masa_negativa": -0.02305612713098526,
+      "segundos": 16.2
+    },
+    {
+      "id": "partido",
+      "prob_objetivo": 0.10402806103229523,
+      "suma_atribuciones": 5.525874152779579,
+      "masa_positiva": 5.578048044349997,
+      "masa_negativa": -0.05217389157041906,
+      "segundos": 16.6
+    }
+  ]
+}
