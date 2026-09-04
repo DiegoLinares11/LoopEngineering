@@ -263,6 +263,20 @@ escena--, no sobre el objeto que la etiqueta nombra. A esto se suma que el borra
 aleatorio \emph{aumenta} la confianza hasta $0.166$, un comportamiento que no cabe
 esperar de una predicción bien fundamentada.
 
+La Figura~\ref{fig:ablaciones} hace visible el contraste. En la fila C, la imagen que
+conserva el balón es un borrón del que el modelo ya no extrae nada, mientras que la que lo
+ha borrado sigue siendo una escena de fútbol perfectamente legible --- y es esa, no la
+primera, la que sostiene la predicción.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.66\textwidth]{../figures/ablaciones.png}
+\caption{Ablaciones. Izquierda: solo se conserva la caja del balón (¿basta el objeto?).
+Derecha: solo se borra la caja del balón (¿es necesario?). En A y B el objeto manda; en C
+la predicción sobrevive sin él y se desploma sin el contexto.}
+\label{fig:ablaciones}
+\end{figure}
+
 \section{Discusión}
 
 \subsection{Acertar por las razones equivocadas}
@@ -355,17 +369,20 @@ de objeto, donde ambos factores puedan separarse.
 \section{Reproducibilidad}
 
 Todo el material está en \texttt{https://github.com/DiegoLinares11/LoopEngineering}.
-La secuencia completa es:
+El análisis completo vive en un único cuaderno, \texttt{analisis\_shap.ipynb}, que se
+ejecuta de principio a fin sin depender de ningún otro archivo del repositorio:
 
 \begin{verbatim}
-pip install -r requirements.txt
-python src/fetch_images.py     # descarga determinista + manifiesto de licencias
-python src/classify.py         # -> results/predictions.json
-python src/explain_shap.py     # -> results/shap_values.npz, figures/
-python src/evaluate.py         # -> results/evaluation.json, figures/
-python src/make_tables.py      # -> paper/generado/*.tex
+jupyter notebook analisis_shap.ipynb    # Ejecutar > Ejecutar todas las celdas
 cd paper && pdflatex paper.tex && bibtex paper && pdflatex paper.tex && pdflatex paper.tex
 \end{verbatim}
+
+El cuaderno descarga las imágenes, clasifica, calcula las atribuciones, corre las tres
+pruebas de verificación y escribe tanto los archivos de \texttt{results/} y
+\texttt{figures/} como las dos tablas de este documento. El presupuesto de evaluaciones
+es el parámetro \texttt{EVALS}: con $2000$ se obtienen los mapas aquí presentados; con
+$120$ el cuaderno entero corre en menos de dos minutos, útil para comprobar la
+instalación antes de la corrida definitiva.
 
 Las semillas están fijas ($20260902$) y cada archivo JSON de resultados incluye las
 versiones exactas de Python, \texttt{torch}, \texttt{transformers}, \texttt{shap} y

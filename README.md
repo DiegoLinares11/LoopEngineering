@@ -5,7 +5,8 @@ de Inteligencia Artificial Responsable: construir, mediante un *loop* asistido p
 paper en LaTeX **reproducible** que explique las predicciones de un clasificador de
 imágenes.
 
-**Paper:** [`paper/paper.pdf`](paper/paper.pdf) · **Log del loop:**
+**Análisis:** [`analisis_shap.ipynb`](analisis_shap.ipynb) · **Paper:**
+[`paper/paper.pdf`](paper/paper.pdf) · **Log del loop:**
 [`docs/prompt_log.md`](docs/prompt_log.md)
 
 ## La pregunta
@@ -42,38 +43,43 @@ refutarlas.
 La conclusión: ningún mapa de atribución debería reportarse como explicación sin una prueba
 de necesidad y una de suficiencia sobre la región que señala.
 
-## Estructura
-
-```
-src/        scripts reproducibles (descarga, clasificación, SHAP, verificación, tablas)
-data/       imágenes de prueba, manifiesto de licencias y cajas anotadas
-results/    salidas en JSON y valores SHAP crudos (.npz)
-figures/    figuras generadas que consume el paper
-paper/      paper.tex, bibliografía, tablas generadas y PDF compilado
-docs/       log del loop y limitaciones de ingeniería
-```
-
 ## Reproducir
 
-Requiere Python 3.11+ y una distribución de LaTeX con `pdflatex`.
+Todo el análisis vive en **un solo cuaderno autocontenido**, que no depende de ningún otro
+archivo del repositorio: descarga las imágenes, clasifica, calcula SHAP, corre las tres
+pruebas de verificación y escribe los resultados, las figuras y las tablas del paper.
 
 ```bash
-pip install -r requirements.txt
-python src/fetch_images.py     # descarga determinista + manifiesto de licencias
-python src/classify.py         # -> results/predictions.json
-python src/explain_shap.py     # -> results/shap_values.npz, figures/  (~15 min en CPU)
-python src/evaluate.py         # -> results/evaluation.json, figures/
-python src/make_tables.py      # -> paper/generado/*.tex
-cd paper && pdflatex paper.tex && bibtex paper && pdflatex paper.tex && pdflatex paper.tex
+jupyter notebook analisis_shap.ipynb     # Ejecutar > Ejecutar todas las celdas
 ```
 
-Atajos útiles: `--evals 120` recorta la corrida de SHAP a menos de un minuto para
-comprobar que todo funciona, y `--solo-figura` redibuja la figura desde el `.npz` sin
-recalcular nada.
+El cuaderno instala por su cuenta lo que falte, así que también corre en Colab sin clonar
+el repositorio. Requiere Python 3.11+.
+
+El parámetro `EVALS` controla el presupuesto de evaluaciones de SHAP: con **2000** se
+obtienen los mapas del paper (~5 min por imagen en CPU); con **120** el cuaderno entero
+corre en menos de dos minutos y sirve para comprobar que todo funciona.
+
+Después, para reconstruir el PDF:
+
+```bash
+cd paper && pdflatex paper.tex && bibtex paper && pdflatex paper.tex && pdflatex paper.tex
+```
 
 Las semillas están fijas y cada JSON de resultados registra las versiones exactas de
 Python, `torch`, `transformers`, `shap` y `numpy` con las que se produjo. Las tablas del
 paper se generan desde esos JSON: ninguna cifra del documento está escrita a mano.
+
+## Estructura
+
+```
+analisis_shap.ipynb   el análisis completo — única fuente de verdad
+data/                 imágenes de prueba, manifiesto de licencias y cajas anotadas
+results/              salidas en JSON y valores SHAP crudos (.npz)
+figures/              figuras generadas que consume el paper
+paper/                paper.tex, bibliografía, tablas generadas y PDF compilado
+docs/                 log del loop y limitaciones de ingeniería
+```
 
 ## Licencias
 

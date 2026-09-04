@@ -34,25 +34,41 @@ abortar. Se eligió así para que el script no falle en entornos distintos al de
 
 ## Costo de cómputo
 
-Todo corre en CPU. Con 2000 evaluaciones por imagen, `explain_shap.py` tarda del orden de
-5 minutos por imagen (~15 min las tres) en un portátil reciente. `evaluate.py` y
-`classify.py` tardan menos de un minuto cada uno.
+Todo corre en CPU. Con `EVALS = 2000`, el cálculo de atribuciones tarda del orden de 5
+minutos por imagen (~15 min las tres) en un portátil reciente; el resto del cuaderno tarda
+menos de dos minutos en total. Con `EVALS = 120` el cuaderno entero corre en menos de dos
+minutos y sirve para verificar la instalación antes de la corrida definitiva.
 
-Para iterar sobre el diseño de la figura existe `python src/explain_shap.py --solo-figura`,
-que la redibuja desde `results/shap_values.npz` sin recalcular las atribuciones. El
-presupuesto de evaluaciones se controla con `--evals`; con 120 el circuito completo corre
-en menos de un minuto y sirve para verificar que todo funciona antes de la corrida final.
-
-Los tiempos que guarda `results/shap_summary.json` son de **CPU** (`process_time`), que
-suma el trabajo de todos los hilos de `torch`: son aproximadamente el tiempo de pared
+Los tiempos que guarda `results/evaluation.json` son de **CPU** (`process_time`), que suma
+el trabajo de todos los hilos de `torch`: son aproximadamente el tiempo de pared
 multiplicado por los núcleos ocupados, no lo que hay que esperar frente a la pantalla. Se
 midió así porque el tiempo de pared quedaba falseado si la máquina se suspendía a mitad de
 la corrida.
 
+## Sensibilidad al presupuesto de evaluaciones
+
+El presupuesto no afecta a todas las cifras por igual, y conviene saber cuáles se mueven.
+Comparando una corrida con `EVALS = 120` contra la de `EVALS = 2000`:
+
+| Métrica | 120 evals | 2000 evals | ¿Depende del presupuesto? |
+|---|---|---|---|
+| Masa positiva en el objeto (A / B / C) | 76.4 / 41.3 / 2.3 % | 83.4 / 53.1 / 3.5 % | **Sí** |
+| Enriquecimiento (A / B / C) | ×1.1 / ×2.1 / ×2.1 | ×1.2 / ×2.7 / ×3.2 | **Sí** |
+| AUC del borrado aleatorio | 0.704 / 0.294 / 0.042 | idéntico | No |
+| Ablaciones (solo balón / sin balón) | 0.994·0.020 / 0.865·0.001 / 0.009·0.058 | idéntico | No |
+
+La razón es que un presupuesto mayor produce una partición más fina, y la masa se
+redistribuye dentro de regiones más pequeñas. El orden entre las tres condiciones se
+mantiene en ambos casos.
+
+Esto importa para leer el trabajo: **las conclusiones del paper descansan sobre las
+ablaciones, que no dependen del presupuesto**. Las métricas de concentración, que sí
+dependen, son justamente las que el paper muestra que resultan engañosas.
+
 ## Dependencias externas
 
-`fetch_images.py` requiere acceso a la API de Wikimedia Commons. Si un archivo se
-renombrara o se retirara de Commons, la descarga fallaría; el manifiesto conserva título,
+La sección de datos del cuaderno requiere acceso a la API de Wikimedia Commons. Si un
+archivo se renombrara o se retirara de Commons, la descarga fallaría; el manifiesto conserva título,
 URL, autor, licencia y `sha256` de cada imagen, de modo que el conjunto es identificable
 aunque haya que recuperarlo por otra vía.
 

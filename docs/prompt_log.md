@@ -49,7 +49,7 @@ gradiente con una hipótesis falsable.
 
 Las imágenes se eligieron consultando la API de Wikimedia Commons filtrando por licencia,
 descargando candidatas y **mirándolas** antes de decidir. Quedaron fijadas por título exacto
-en `src/fetch_images.py`, no por búsqueda, para que la descarga sea determinista.
+en el cuaderno, no por búsqueda, para que la descarga sea determinista.
 
 ## 4. Decisiones técnicas y por qué
 
@@ -114,5 +114,30 @@ afirmaciones a lo que los datos sostienen fue trabajo de revisión, no de genera
 
 **Riesgo específico observado:** el modelo produce con la misma fluidez una cifra calculada
 y una plausible. La única defensa efectiva fue estructural: generar las tablas desde los
-JSON de resultados (`src/make_tables.py`), de modo que ninguna cifra del documento pueda
+JSON de resultados, de modo que ninguna cifra del documento pueda
 provenir de la redacción.
+
+## 8. Reestructuración final: de scripts a un solo cuaderno
+
+El proyecto se desarrolló como seis scripts `.py` bajo `src/`. Al revisar el entregable se
+optó por reunir todo en un único `analisis_shap.ipynb`, y conviene dejar por escrito el
+razonamiento porque hay una pérdida real.
+
+**A favor del cuaderno:** el enunciado pide "código/notebook SHAP"; un cuaderno se abre y se
+lee de arriba abajo sin reconstruir mentalmente el orden de ejecución de seis archivos; y las
+figuras quedan junto al texto que las interpreta, que es justo lo que un trabajo sobre
+explicabilidad debería hacer bien.
+
+**En contra:** un cuaderno admite estados ocultos —celdas ejecutadas fuera de orden— que son
+lo opuesto a la reproducibilidad que el paper reclama. Los scripts obligaban a que cada paso
+partiera de un proceso limpio.
+
+**Cómo se mitigó:** el cuaderno se ejecuta completo y en orden con `nbconvert --execute`
+antes de cada entrega, de modo que las salidas guardadas provienen siempre de una corrida
+única y secuencial, nunca de celdas sueltas. Y se mantuvo lo esencial: el cuaderno sigue
+escribiendo los JSON de resultados y generando las tablas `.tex` desde ellos.
+
+**Lo que no se hizo, deliberadamente:** conservar los `.py` *y* el cuaderno. Habría duplicado
+la lógica en dos lugares que se desincronizan en cuanto uno cambia — exactamente el defecto
+que este trabajo critica cuando pide que las cifras del paper no se transcriban a mano.
+
