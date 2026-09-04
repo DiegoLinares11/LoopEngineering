@@ -1,9 +1,24 @@
 {
-  "descripcion": "Caja envolvente del balon sobre el recorte central de 224x224 px que recibe el modelo, en formato [x_min, y_min, x_max, y_max] con origen en la esquina superior izquierda.",
-  "metodo": "Trazada a mano sobre una rejilla de coordenadas y ajustada con un umbral de color (el balon es claro y poco saturado frente al cesped verde). Es una caja, no una segmentacion: incluye algo de fondo en las esquinas, lo que hace conservadora la medicion de evidencia sobre el objeto.",
+  "descripcion": "Caja envolvente del balon sobre el recorte central de 224x224 px.",
+  "metodo": "Trazada a mano sobre una rejilla y ajustada con un umbral de color.",
   "cajas": {
-    "close_up": [16, 14, 208, 196],
-    "campo": [27, 84, 131, 180],
-    "partido": [96, 122, 119, 146]
+    "close_up": [
+      16,
+      14,
+      208,
+      196
+    ],
+    "campo": [
+      27,
+      84,
+      131,
+      180
+    ],
+    "partido": [
+      96,
+      122,
+      119,
+      146
+    ]
   }
 }

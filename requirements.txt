@@ -5,3 +5,8 @@ numpy==2.4.1
 pillow==12.1.1
 matplotlib==3.10.8
 opencv-python==4.13.0
+
+# Para abrir y ejecutar analisis_shap.ipynb. El cuaderno instala por su cuenta lo que
+# falte, asi que en Colab no hace falta instalar nada de este archivo.
+notebook>=7.0
+ipykernel>=6.29

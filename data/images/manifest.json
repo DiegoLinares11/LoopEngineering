@@ -1,48 +1,32 @@
 {
   "fuente": "Wikimedia Commons",
-  "ancho_solicitado": 1024,
   "imagenes": [
     {
       "id": "close_up",
       "archivo": "close_up.jpg",
       "titulo_commons": "File:Soccer Ball (42232038211).jpg",
       "pagina": "https://commons.wikimedia.org/wiki/File:Soccer_Ball_(42232038211).jpg",
-      "url_descarga": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Soccer_Ball_%2842232038211%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
       "autor": "",
       "licencia": "CC BY 2.0",
-      "url_licencia": "https://creativecommons.org/licenses/by/2.0",
-      "ancho_original": 996,
-      "alto_original": 996,
-      "sha256": "2462ed1d71c97dce72e8dd7ada7f4f15e617f87273b756ad50f4809ef9dfcdf5",
-      "bytes": 482677
+      "sha256": "2462ed1d71c97dce72e8dd7ada7f4f15e617f87273b756ad50f4809ef9dfcdf5"
     },
     {
       "id": "campo",
       "archivo": "campo.jpg",
       "titulo_commons": "File:Adidas soccer ball on a grass pitch (Unsplash).jpg",
       "pagina": "https://commons.wikimedia.org/wiki/File:Adidas_soccer_ball_on_a_grass_pitch_(Unsplash).jpg",
-      "url_descarga": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Adidas_soccer_ball_on_a_grass_pitch_%28Unsplash%29.jpg/1280px-Adidas_soccer_ball_on_a_grass_pitch_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "autor": "Peter Glaser baraida",
       "licencia": "CC0",
-      "url_licencia": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "ancho_original": 5787,
-      "alto_original": 3858,
-      "sha256": "1c71cf4095f00730f508643c042ea078ac7812d5ace8d7d8768e4f3ac609fe96",
-      "bytes": 153675
+      "sha256": "1c71cf4095f00730f508643c042ea078ac7812d5ace8d7d8768e4f3ac609fe96"
     },
     {
       "id": "partido",
       "archivo": "partido.jpg",
       "titulo_commons": "File:Players and referees before a football match.jpg",
       "pagina": "https://commons.wikimedia.org/wiki/File:Players_and_referees_before_a_football_match.jpg",
-      "url_descarga": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Players_and_referees_before_a_football_match.jpg/1280px-Players_and_referees_before_a_football_match.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "autor": "Samson Ssemakadde",
       "licencia": "CC0",
-      "url_licencia": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "ancho_original": 4928,
-      "alto_original": 3264,
-      "sha256": "14174ce750f61805aea84e9bcf243cd7504b7ec5386f346f1dcd7681b93feadb",
-      "bytes": 403152
+      "sha256": "14174ce750f61805aea84e9bcf243cd7504b7ec5386f346f1dcd7681b93feadb"
     }
   ]
 }

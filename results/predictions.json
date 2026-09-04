@@ -4,186 +4,112 @@
     "torch": "2.10.0+cu128",
     "transformers": "5.14.1",
     "shap": "0.52.0",
-    "numpy": "2.4.1",
-    "modelo": "google/vit-base-patch16-224",
-    "semilla": "20260902"
+    "numpy": "2.4.1"
   },
   "predicciones": [
     {
       "id": "close_up",
       "clase_predicha": "soccer ball",
-      "indice_predicho": 805,
       "confianza": 0.9968090653419495,
       "top_k": [
         {
           "clase": "soccer ball",
-          "indice": 805,
           "prob": 0.9968090653419495
         },
         {
           "clase": "golf ball",
-          "indice": 574,
           "prob": 0.0008297188905999064
         },
         {
           "clase": "rugby ball",
-          "indice": 768,
           "prob": 0.00039775774348527193
         },
         {
           "clase": "tennis ball",
-          "indice": 852,
           "prob": 0.00028479594038799405
         },
         {
           "clase": "croquet ball",
-          "indice": 522,
           "prob": 0.00023218845308292657
         }
       ],
       "clases_de_interes": {
-        "soccer ball": {
-          "indice": 805,
-          "prob": 0.9968090653419495
-        },
-        "ballplayer, baseball player": {
-          "indice": 981,
-          "prob": 1.065059564098192e-06
-        },
-        "rugby ball": {
-          "indice": 768,
-          "prob": 0.00039775774348527193
-        },
-        "basketball": {
-          "indice": 430,
-          "prob": 3.870383443427272e-05
-        },
-        "volleyball": {
-          "indice": 890,
-          "prob": 7.046156679280102e-05
-        },
-        "scoreboard": {
-          "indice": 781,
-          "prob": 1.5144667031563586e-06
-        }
+        "soccer ball": 0.9968090653419495,
+        "ballplayer, baseball player": 1.065059564098192e-06,
+        "rugby ball": 0.00039775774348527193,
+        "basketball": 3.870383443427272e-05,
+        "volleyball": 7.046156679280102e-05,
+        "scoreboard": 1.5144667031563586e-06
       }
     },
     {
       "id": "campo",
       "clase_predicha": "soccer ball",
-      "indice_predicho": 805,
       "confianza": 0.9829440712928772,
       "top_k": [
         {
           "clase": "soccer ball",
-          "indice": 805,
           "prob": 0.9829440712928772
         },
         {
           "clase": "rugby ball",
-          "indice": 768,
           "prob": 0.007084757089614868
         },
         {
           "clase": "golf ball",
-          "indice": 574,
           "prob": 0.004611436277627945
         },
         {
           "clase": "baseball",
-          "indice": 429,
           "prob": 0.0009864519815891981
         },
         {
           "clase": "volleyball",
-          "indice": 890,
           "prob": 0.0006585879600606859
         }
       ],
       "clases_de_interes": {
-        "soccer ball": {
-          "indice": 805,
-          "prob": 0.9829440712928772
-        },
-        "ballplayer, baseball player": {
-          "indice": 981,
-          "prob": 7.966642442625016e-06
-        },
-        "rugby ball": {
-          "indice": 768,
-          "prob": 0.007084757089614868
-        },
-        "basketball": {
-          "indice": 430,
-          "prob": 0.0003951682010665536
-        },
-        "volleyball": {
-          "indice": 890,
-          "prob": 0.0006585879600606859
-        },
-        "scoreboard": {
-          "indice": 781,
-          "prob": 7.5727571129391436e-06
-        }
+        "soccer ball": 0.9829440712928772,
+        "ballplayer, baseball player": 7.966642442625016e-06,
+        "rugby ball": 0.007084757089614868,
+        "basketball": 0.0003951682010665536,
+        "volleyball": 0.0006585879600606859,
+        "scoreboard": 7.5727571129391436e-06
       }
     },
     {
       "id": "partido",
       "clase_predicha": "soccer ball",
-      "indice_predicho": 805,
       "confianza": 0.10402806103229523,
       "top_k": [
         {
           "clase": "soccer ball",
-          "indice": 805,
           "prob": 0.10402806103229523
         },
         {
           "clase": "rugby ball",
-          "indice": 768,
           "prob": 0.0835857093334198
         },
         {
           "clase": "volleyball",
-          "indice": 890,
           "prob": 0.05918167531490326
         },
         {
           "clase": "racket, racquet",
-          "indice": 752,
           "prob": 0.04613954946398735
         },
         {
           "clase": "stretcher",
-          "indice": 830,
           "prob": 0.028185006231069565
         }
       ],
       "clases_de_interes": {
-        "soccer ball": {
-          "indice": 805,
-          "prob": 0.10402806103229523
-        },
-        "ballplayer, baseball player": {
-          "indice": 981,
-          "prob": 0.0107629569247365
-        },
-        "rugby ball": {
-          "indice": 768,
-          "prob": 0.0835857093334198
-        },
-        "basketball": {
-          "indice": 430,
-          "prob": 0.017524057999253273
-        },
-        "volleyball": {
-          "indice": 890,
-          "prob": 0.05918167531490326
-        },
-        "scoreboard": {
-          "indice": 781,
-          "prob": 0.006550449877977371
-        }
+        "soccer ball": 0.10402806103229523,
+        "ballplayer, baseball player": 0.0107629569247365,
+        "rugby ball": 0.0835857093334198,
+        "basketball": 0.017524057999253273,
+        "volleyball": 0.05918167531490326,
+        "scoreboard": 0.006550449877977371
       }
     }
   ]

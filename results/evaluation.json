@@ -1,4 +1,6 @@
 {
+  "clase_objetivo": "soccer ball",
+  "evaluaciones_por_imagen": 2000,
   "fracciones": [
     0.0,
     0.02,
@@ -23,9 +25,7 @@
     "torch": "2.10.0+cu128",
     "transformers": "5.14.1",
     "shap": "0.52.0",
-    "numpy": "2.4.1",
-    "modelo": "google/vit-base-patch16-224",
-    "semilla": "20260902"
+    "numpy": "2.4.1"
   },
   "metricas": [
     {
@@ -37,29 +37,32 @@
       "auc_supresion_guiada": 0.2907,
       "auc_supresion_azar": 0.704,
       "prob_solo_objeto": 0.9939320087432861,
-      "prob_sin_objeto": 0.019887937232851982
+      "prob_sin_objeto": 0.019887937232851982,
+      "segundos_cpu": 3305.7
     },
     {
       "id": "campo",
-      "prob_original": 0.9829439520835876,
+      "prob_original": 0.9829440712928772,
       "area_objeto": 0.199,
       "masa_positiva_en_objeto": 0.5308,
       "enriquecimiento": 2.67,
       "auc_supresion_guiada": 0.1079,
       "auc_supresion_azar": 0.2942,
       "prob_solo_objeto": 0.864712655544281,
-      "prob_sin_objeto": 0.0014100197004154325
+      "prob_sin_objeto": 0.0014100197004154325,
+      "segundos_cpu": 2954.5
     },
     {
       "id": "partido",
-      "prob_original": 0.10402816534042358,
+      "prob_original": 0.10402806103229523,
       "area_objeto": 0.011,
       "masa_positiva_en_objeto": 0.0354,
       "enriquecimiento": 3.22,
       "auc_supresion_guiada": 0.0207,
       "auc_supresion_azar": 0.0421,
       "prob_solo_objeto": 0.009498353116214275,
-      "prob_sin_objeto": 0.05802612751722336
+      "prob_sin_objeto": 0.05802612751722336,
+      "segundos_cpu": 2308.3
     }
   ],
   "curvas": {
