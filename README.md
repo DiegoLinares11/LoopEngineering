@@ -5,6 +5,8 @@ de Inteligencia Artificial Responsable: construir, mediante un *loop* asistido p
 paper en LaTeX **reproducible** que explique las predicciones de un clasificador de
 imágenes.
 
+**Autores:** Andy Fuentes y Diego Linares.
+
 **Análisis:** [`analisis_shap.ipynb`](analisis_shap.ipynb) · **Paper:**
 [`paper/paper.pdf`](paper/paper.pdf) · **Log del loop:**
 [`docs/prompt_log.md`](docs/prompt_log.md)
@@ -66,6 +68,15 @@ Después, para reconstruir el PDF:
 cd paper && pdflatex paper.tex && bibtex paper && pdflatex paper.tex && pdflatex paper.tex
 ```
 
+Antes de entregar, el paquete completo se valida sin conexión con:
+
+```bash
+python verify_submission.py
+```
+
+El verificador comprueba los entregables, la estructura del notebook y los JSON, los hashes
+de las imágenes, sus créditos y todas las figuras, tablas y referencias usadas por LaTeX.
+
 Las semillas están fijas y cada JSON de resultados registra las versiones exactas de
 Python, `torch`, `transformers`, `shap` y `numpy` con las que se produjo. Las tablas del
 paper se generan desde esos JSON: ninguna cifra del documento está escrita a mano.
@@ -74,6 +85,7 @@ paper se generan desde esos JSON: ninguna cifra del documento está escrita a ma
 
 ```
 analisis_shap.ipynb   el análisis completo — única fuente de verdad
+verify_submission.py  verificación automática del paquete de entrega
 data/                 imágenes de prueba, manifiesto de licencias y cajas anotadas
 results/              salidas en JSON y valores SHAP crudos (.npz)
 figures/              figuras generadas que consume el paper

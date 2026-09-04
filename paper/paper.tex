@@ -15,11 +15,15 @@
 
 \bibliographystyle{plainnat}
 \captionsetup{font=small}
+\hypersetup{
+  pdftitle={¿El modelo mira el balón o mira el césped?},
+  pdfauthor={Andy Fuentes, Diego Linares}
+}
 
-\title{\textbf{¿El modelo mira el balón o mira el césped?}\\[2mm]
+\title{\textbf{\textquestiondown{}El modelo mira el balón o mira el césped?}\\[2mm]
 \large Una auditoría con SHAP de un clasificador ViT sobre escenas de fútbol}
 
-\author{Diego Linares\\
+\author{Andy Fuentes y Diego Linares\\
 \small Universidad del Valle de Guatemala \\
 \small Inteligencia Artificial Responsable}
 
@@ -52,7 +56,7 @@ de ablación que lo acompañe.
 
 La pregunta que motiva este trabajo es concreta y verificable: cuando un
 clasificador de imágenes responde \texttt{soccer ball} ante una escena de fútbol,
-¿qué parte de la imagen sostiene esa respuesta?
+\textquestiondown{}qué parte de la imagen sostiene esa respuesta?
 
 La pregunta importa porque una etiqueta correcta no garantiza un mecanismo correcto.
 Un modelo entrenado sobre fotografías naturales aprende regularidades del conjunto de
@@ -271,8 +275,9 @@ primera, la que sostiene la predicción.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.66\textwidth]{../figures/ablaciones.png}
-\caption{Ablaciones. Izquierda: solo se conserva la caja del balón (¿basta el objeto?).
-Derecha: solo se borra la caja del balón (¿es necesario?). En A y B el objeto manda; en C
+\caption{Ablaciones. Izquierda: solo se conserva la caja del balón
+(\textquestiondown{}basta el objeto?). Derecha: solo se borra la caja del balón
+(\textquestiondown{}es necesario?). En A y B el objeto manda; en C
 la predicción sobrevive sin él y se desploma sin el contexto.}
 \label{fig:ablaciones}
 \end{figure}
@@ -374,7 +379,12 @@ ejecuta de principio a fin sin depender de ningún otro archivo del repositorio:
 
 \begin{verbatim}
 jupyter notebook analisis_shap.ipynb    # Ejecutar > Ejecutar todas las celdas
-cd paper && pdflatex paper.tex && bibtex paper && pdflatex paper.tex && pdflatex paper.tex
+python verify_submission.py             # Validar el paquete antes de entregarlo
+cd paper
+pdflatex paper.tex
+bibtex paper
+pdflatex paper.tex
+pdflatex paper.tex
 \end{verbatim}
 
 El cuaderno descarga las imágenes, clasifica, calcula las atribuciones, corre las tres
@@ -391,6 +401,9 @@ esos JSON: ninguna cifra del texto se transcribió a mano, de modo que no pueden
 desincronizarse del experimento. Las imágenes se identifican por su título en Commons y
 por su \texttt{sha256}. El registro de la interacción con el asistente de IA que
 acompañó el desarrollo está en \texttt{docs/prompt\_log.md}.
+El verificador \texttt{verify\_submission.py} comprueba además, sin descargar nada,
+que el paquete conserva todos los entregables, que los JSON y el cuaderno son válidos,
+que los hashes de las imágenes coinciden y que cada recurso citado por LaTeX existe.
 
 \section{Conclusión}
 

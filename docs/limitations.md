@@ -87,5 +87,5 @@ de la columna *Masa*; el orden entre las tres condiciones no depende de ese deta
 
 Las imágenes son CC0 (B: `Adidas soccer ball on a grass pitch`; C: `Players and referees
 before a football match`) y CC BY 2.0 (A: `Soccer Ball (42232038211)`). La atribución
-completa está en `data/images/manifest.json`. El código de este repositorio es del autor;
+completa está en `data/images/manifest.json`. El código de este repositorio es de los autores;
 los pesos del modelo se rigen por la licencia de su publicación en Hugging Face.

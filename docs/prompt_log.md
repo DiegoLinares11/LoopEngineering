@@ -1,7 +1,7 @@
 # Log del loop asistido por IA
 
-Registro de cómo se construyó el trabajo con asistencia de un modelo de lenguaje
-(Claude Opus 5 vía Claude Code). No es una transcripción literal: es el registro de las
+Registro de cómo se construyó el trabajo con asistencia de modelos de lenguaje
+(Claude Opus 5 vía Claude Code y Codex de OpenAI). No es una transcripción literal: es el registro de las
 decisiones, los descartes y los errores, que es lo que permite juzgar el proceso.
 
 El criterio que ordenó todo el loop fue **no aceptar nada que no se hubiera ejecutado**.
@@ -141,3 +141,18 @@ escribiendo los JSON de resultados y generando las tablas `.tex` desde ellos.
 la lógica en dos lugares que se desincronizan en cuanto uno cambia — exactamente el defecto
 que este trabajo critica cuando pide que las cifras del paper no se transcriban a mano.
 
+## 9. Revisión final del paquete
+
+**Petición:** comparar el repositorio con la lista de entregables y buscar una mejora concreta
+antes de cerrar la entrega.
+
+**Hallazgo:** el paquete contenía el paper, el notebook, las figuras, las referencias, el log
+y las limitaciones, pero el crédito de `close_up.jpg` quedaba vacío porque Wikimedia Commons
+no publica el campo `Artist` de esa fotografía. La página enlaza la publicación original del
+usuario `pockethifi` en Flickr; se añadió ese crédito como respaldo reproducible.
+
+**Mejora:** se incorporó `verify_submission.py`, una comprobación sin conexión que valida los
+archivos obligatorios, JSON y notebook, hashes y créditos de imágenes, y dependencias LaTeX.
+La revisión también sincronizó la autoría de Andy Fuentes en el paper, el PDF, el notebook y
+el README. Así, la última revisión deja una prueba ejecutable de integridad en vez de depender
+de una inspección manual de carpetas.
